@@ -23,4 +23,8 @@ FILE_STATUS = (
 class File(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.FileField(upload_to="files/")
-    status = models.CharField(max_length=20, choices=FILE_STATUS, default=PENDING)
+    out_file = models.FileField(
+        upload_to="files/results/", blank=True, null=True
+    )
+    status = models.CharField(
+        max_length=20, choices=FILE_STATUS, default=PENDING)
